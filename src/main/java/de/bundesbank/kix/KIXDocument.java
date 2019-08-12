@@ -15,7 +15,6 @@
  */
 package de.bundesbank.kix;
 
-import com.google.common.base.Strings;
 import ec.tstoolkit.information.InformationSet;
 import ec.tstoolkit.information.InformationSetSerializable;
 import ec.tstoolkit.timeseries.regression.TsVariables;
@@ -53,7 +52,7 @@ public class KIXDocument implements IModifiable, InformationSetSerializable, IDy
 
     public void setInput(String i) {
         try {
-            i = Strings.emptyToNull(i);
+            i = i == null ? i : i.isEmpty() ? null : i;
             this.inputString.insertString(0, i, null);
             this.initial = i;
         } catch (BadLocationException ex) {
